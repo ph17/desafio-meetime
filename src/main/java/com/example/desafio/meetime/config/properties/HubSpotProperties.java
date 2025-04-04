@@ -2,9 +2,11 @@ package com.example.desafio.meetime.config.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-@ConfigurationProperties("hubspot")
 @Data
+@Component
+@ConfigurationProperties("hubspot")
 public class HubSpotProperties {
     private HubSpotAuthProperties auth;
 }
