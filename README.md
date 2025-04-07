@@ -1,7 +1,4 @@
-# Observações Iniciais
-
-> Observações importantes:
-
+# Observações Importantes
 1. Inicialmente, eu desenvolvi tudo com a intenção de rodar localmente, até notar a necessidade de _webhook_s.  Para que o HubSpot possa chamar meu endpoint, é preciso que o aplicativo esteja exposto na internet. Por isso, fiz o deploy no [Render.com](https://render.com) e manterei o app ativo por **1 semana**. O app só funciona com a URL pública cadastrada no HubSpot, então todos os testes devem ser feitos pela URL do Render.
 2. A instância roda na **free tier** do Render, devido a isso, o aplicativo entrará em modo “sleep” em caso de inatividade e pode levar **50 segundos ou mais** para responder à primeira requisição.
 3. O tópico 4 do desafio não ficou claro. Não entendi muito bem o que queriam dizer com "processar os eventos", por isso, decidi que o endpoint do _webhook_ não faça nada além de logar a requisição recebida.
