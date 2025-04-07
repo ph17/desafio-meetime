@@ -19,14 +19,14 @@ public class CrmController {
 
     @PostMapping("/criar-contato")
     @ResponseStatus(HttpStatus.CREATED)
-    CrmCreateContactResponseDTO criarContato(@RequestHeader("Authorization") String token,
-                                             @RequestBody CrmCreateContactRequestDTO requestDTO){
+    CrmCreateContactResponseDTO criarContatoWebHook(@RequestHeader("Authorization") String token,
+                                                    @RequestBody CrmCreateContactRequestDTO requestDTO){
         return service.criarContato(token, requestDTO);
     }
 
     @PostMapping("/criar-contato-webhook")
     @ResponseStatus(HttpStatus.OK)
-    void criarContato(@RequestBody CrmCreateContactWebHookRequestDTO requestDTO){
-        log.info("Webhook recebido com sucesso! Body recebido: {}", requestDTO);
+    void criarContatoWebHook(@RequestBody CrmCreateContactWebHookRequestDTO requestDTO){
+        log.info("Webhook recebido com sucesso! Body recebido:\n {}", requestDTO);
     }
 }
