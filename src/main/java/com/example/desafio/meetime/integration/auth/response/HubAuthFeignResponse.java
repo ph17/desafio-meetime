@@ -1,4 +1,4 @@
-package com.example.desafio.meetime.integration.response;
+package com.example.desafio.meetime.integration.auth.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

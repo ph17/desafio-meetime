@@ -1,9 +1,9 @@
 package com.example.desafio.meetime.services;
 
 import com.example.desafio.meetime.config.properties.HubSpotProperties;
-import com.example.desafio.meetime.dto.AuthorizationResponseDTO;
-import com.example.desafio.meetime.integration.HubSpotOauthFeign;
-import com.example.desafio.meetime.integration.response.HubAuthFeignResponse;
+import com.example.desafio.meetime.dto.auth.AuthorizationResponseDTO;
+import com.example.desafio.meetime.integration.auth.HubSpotOauthFeign;
+import com.example.desafio.meetime.integration.auth.response.HubAuthFeignResponse;
 import com.example.desafio.meetime.mappers.AuthorizationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class AuthorizationService {
                 .path(authProp.url())
                 .queryParam("client_id", authProp.clientId())
                 .queryParam("redirect_uri", authProp.redirectUri())
-                .queryParam("scope", authProp.requiredScopes())
+                .queryParam("scope", String.join("%20", authProp.requiredScopes()))
                 .queryParam("optional_scope", authProp.optionalScopes())
                 .build()
                 .toUriString();

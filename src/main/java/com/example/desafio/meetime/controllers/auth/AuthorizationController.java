@@ -1,6 +1,6 @@
 package com.example.desafio.meetime.controllers.auth;
 
-import com.example.desafio.meetime.dto.AuthorizationResponseDTO;
+import com.example.desafio.meetime.dto.auth.AuthorizationResponseDTO;
 import com.example.desafio.meetime.services.AuthorizationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.example.desafio.meetime.dto;
+package com.example.desafio.meetime.dto.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
