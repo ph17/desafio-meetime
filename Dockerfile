@@ -1,22 +1,29 @@
-# Importing JDK and copying required files
-FROM openjdk:19-jdk AS build
+#Build da aplicação
+FROM openjdk:17-jdk AS build
 WORKDIR /app
+
+# Copia arquivos do Maven e código-fonte
 COPY pom.xml .
+COPY .mvn .mvn
+COPY mvnw .
 COPY src src
 
-# Copy Maven wrapper
-COPY mvnw .
-COPY .mvn .mvn
-
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
+# Permissão para o wrapper e build do projeto
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create the final Docker image using OpenJDK 19
+# Imagem final
 FROM openjdk:17-jdk
+WORKDIR /app
+
+# Define volume temporário
 VOLUME /tmp
 
-# Copy the JAR from the build stage
+# Copia JAR gerado do estágio de build
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+# Expõe a porta padrão do Spring Boot
 EXPOSE 8080
+
+# Ponto de entrada da aplicação
+ENTRYPOINT ["java", "-jar", "app.jar"]
