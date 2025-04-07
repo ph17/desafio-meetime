@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/crm")
@@ -26,7 +28,7 @@ public class CrmController {
 
     @PostMapping("/criar-contato-webhook")
     @ResponseStatus(HttpStatus.OK)
-    void criarContatoWebHook(@RequestBody CrmCreateContactWebHookRequestDTO requestDTO){
+    void criarContatoWebHook(@RequestBody List<CrmCreateContactWebHookRequestDTO> requestDTO){
         log.info("Webhook recebido com sucesso! Body recebido:\n {}", requestDTO);
     }
 }
